@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { Header } from '../components/Header';
+import LimitTimer from '../components/LimitTimer';
+
 import { url } from '../const';
 import './home.scss';
 
@@ -63,6 +65,16 @@ export const Home = () => {
         setErrorMessage(`タスクの取得に失敗しました。${err}`);
       });
   };
+
+  // const LimitTimer =(props) =>{
+  //   const Str_limit = props
+  //   let y = Str_limit.slice(0,4)
+  //   let m = Str_limit.slice(5,6)
+  //   let d = Str_limit.slice(7,8)
+  //   console.log(y+","+m+","+d)
+  //   return "";
+  // }
+
   return (
     <div>
       <Header />
@@ -143,6 +155,9 @@ const Tasks = (props) => {
                 {task.title}
                 <br />
                 {task.done ? '完了' : '未完了'}
+                <br />
+                {task.limit}
+                <LimitTimer  limit={task.limit}/>
               </Link>
             </li>
           ))}
@@ -165,6 +180,9 @@ const Tasks = (props) => {
               {task.title}
               <br />
               {task.done ? '完了' : '未完了'}
+              <br />
+              {'期限：' + task.limit}
+              <LimitTimer limit={task.limit} />
             </Link>
           </li>
         ))}
