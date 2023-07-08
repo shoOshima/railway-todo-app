@@ -34,10 +34,10 @@ export const SignUp = () => {
         dispatch(signIn());
         setCookie('token', token);
         navigate('/');
-        alert(res.status)
+        alert(res.status);
       })
       .catch((err) => {
-        alert(err)
+        alert(err);
         setErrorMessge(`サインアップに失敗しました。 ${err}`);
       });
 
