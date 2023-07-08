@@ -12,19 +12,19 @@ export const EditTask = () => {
   const [cookies] = useCookies();
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
-  const [limit,setLimit]=useState()
+  const [limit, setLimit] = useState();
   const [isDone, setIsDone] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleIsDoneChange = (e) => setIsDone(e.target.value === 'done');
-  const handleLimitChange = (e) => setLimit(e.target.value)
+  const handleLimitChange = (e) => setLimit(e.target.value);
   const onUpdateTask = () => {
     console.log(isDone);
     const data = {
       title: title,
       detail: detail,
-      limit:limit + ":00Z",
+      limit: limit + ':00Z',
       done: isDone,
     };
 
@@ -70,13 +70,13 @@ export const EditTask = () => {
         let limitformat;
         let limitdate = new Date();
         limitdate = task.limit;
-        limitformat =task.limit.slice(0,16)
-        
+        limitformat = task.limit.slice(0, 16);
+
         setTitle(task.title);
         setDetail(task.detail);
-        setLimit(limitformat)
+        setLimit(limitformat);
         setIsDone(task.done);
-        console.log(task.limit.slice(0,16))
+        console.log(task.limit.slice(0, 16));
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`);

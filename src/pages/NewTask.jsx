@@ -10,20 +10,20 @@ export const NewTask = () => {
   const [selectListId, setSelectListId] = useState();
   const [lists, setLists] = useState([]);
   const [title, setTitle] = useState('');
-  const[limit,setLimit]=useState();
+  const [limit, setLimit] = useState();
   const [detail, setDetail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
-  const handleLimitChange = (e) => setLimit(e.target.value + ":00Z")
+  const handleLimitChange = (e) => setLimit(e.target.value + ':00Z');
   const handleSelectList = (id) => setSelectListId(id);
   const onCreateTask = () => {
     const data = {
       title: title,
       detail: detail,
-      limit : limit,
+      limit: limit,
       done: false,
     };
 

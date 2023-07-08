@@ -157,7 +157,7 @@ const Tasks = (props) => {
                 {task.done ? '完了' : '未完了'}
                 <br />
                 {task.limit}
-                <LimitTimer  limit={task.limit}/>
+                <LimitTimer limit={task.limit} />
               </Link>
             </li>
           ))}
