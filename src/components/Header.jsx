@@ -9,11 +9,11 @@ export const Header = () => {
   const auth = useSelector((state) => state.auth.isSignIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies,removeCookie] = useCookies();
   const handleSignOut = () => {
     dispatch(signOut());
     removeCookie('token');
-    navigate.push('/signin');
+    navigate('/signin');
   };
 
   return (

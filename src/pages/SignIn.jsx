@@ -15,7 +15,7 @@ export const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState();
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies, setCookie] = useCookies();
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const onSignIn = () => {
@@ -24,7 +24,7 @@ export const SignIn = () => {
       .then((res) => {
         setCookie('token', res.data.token);
         dispatch(signIn());
-        navigate.push('/');
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`サインインに失敗しました。${err}`);
