@@ -16,7 +16,8 @@ export const SignUp = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessge] = useState();
-  const [cookies, setCookie] = useCookies();
+  // eslint-disable-next-line no-unused-vars
+  const [cookies,setCookies, removeCookie] = useCookies();
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -32,7 +33,7 @@ export const SignUp = () => {
       .then((res) => {
         const token = res.data.token;
         dispatch(signIn());
-        setCookie('token', token);
+        setCookies('token', token);
         navigate('/');
         alert(res.status);
       })

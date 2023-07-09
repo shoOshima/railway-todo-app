@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react';
 export default function LimitTimer(props) {
   const [contMsg, setCountMsg] = useState('');
   if (props.limit != null) {
-
     useEffect(() => {
       console.log('start');
       const da = new Date(props.limit);
       const limitdt = da.getTime();
       const nowdt = new Date().getTime();
-  
+
       let diff2Dates = limitdt - nowdt;
       setCountMsg(limmsg(diff2Dates));
       setInterval(() => {

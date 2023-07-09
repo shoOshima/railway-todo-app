@@ -15,14 +15,15 @@ export const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState();
-  const [cookies, setCookie] = useCookies();
+  // eslint-disable-next-line no-unused-vars
+  const [cookies,setCookies, removeCookie] = useCookies();
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const onSignIn = () => {
     axios
       .post(`${url}/signin`, { email: email, password: password })
       .then((res) => {
-        setCookie('token', res.data.token);
+        setCookies('token', res.data.token);
         dispatch(signIn());
         navigate('/');
       })

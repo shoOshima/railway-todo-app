@@ -66,15 +66,6 @@ export const Home = () => {
       });
   };
 
-  // const LimitTimer =(props) =>{
-  //   const Str_limit = props
-  //   let y = Str_limit.slice(0,4)
-  //   let m = Str_limit.slice(5,6)
-  //   let d = Str_limit.slice(7,8)
-  //   console.log(y+","+m+","+d)
-  //   return "";
-  // }
-
   return (
     <div>
       <Header />
@@ -94,7 +85,7 @@ export const Home = () => {
               </p>
             </div>
           </div>
-          <ul className="list-tab">
+          <ul className="list-tab" role="tablist">
             {lists.map((list, key) => {
               const isActive = list.id === selectListId;
               return (
@@ -102,6 +93,8 @@ export const Home = () => {
                   key={key}
                   className={`list-tab-item ${isActive ? 'active' : ''}`}
                   onClick={() => handleSelectList(list.id)}
+                  role="tab"
+                  aria-keyshortcuts={key}
                 >
                   {list.title}
                 </li>

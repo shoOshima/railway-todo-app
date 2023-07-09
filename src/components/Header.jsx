@@ -9,7 +9,8 @@ export const Header = () => {
   const auth = useSelector((state) => state.auth.isSignIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies();
+  // eslint-disable-next-line no-unused-vars
+  const [cookies,setCookies, removeCookie] = useCookies();
   const handleSignOut = () => {
     dispatch(signOut());
     removeCookie('token');
