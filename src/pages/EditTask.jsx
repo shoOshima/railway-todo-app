@@ -68,8 +68,6 @@ export const EditTask = () => {
       .then((res) => {
         const task = res.data;
         let limitformat;
-        let limitdate = new Date();
-        limitdate = task.limit;
         limitformat = task.limit.slice(0, 16);
 
         setTitle(task.title);

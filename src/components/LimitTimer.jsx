@@ -3,18 +3,18 @@ import { useEffect, useState } from 'react';
 export default function LimitTimer(props) {
   const [contMsg, setCountMsg] = useState('');
   if (props.limit != null) {
-    const da = new Date(props.limit);
-    const limitdt = da.getTime();
-    const nowdt = new Date().getTime();
-
-    let diff2Dates = limitdt - nowdt;
-
-    var msg2 = limmsg(diff2Dates);
 
     useEffect(() => {
       console.log('start');
+      const da = new Date(props.limit);
+      const limitdt = da.getTime();
+      const nowdt = new Date().getTime();
+  
+      let diff2Dates = limitdt - nowdt;
+      setCountMsg(limmsg(diff2Dates));
       setInterval(() => {
-        diff2Dates -= 1;
+        const interTime = new Date().getTime();
+        let diff2Dates = limitdt - interTime;
         setCountMsg(limmsg(diff2Dates));
         console.log(contMsg);
       }, 1000);
@@ -44,8 +44,7 @@ export default function LimitTimer(props) {
 
   return (
     <div>
-      <p>残り:{msg2}</p>
-      {/* <p>残りs:{contMsg}</p> */}
+      <p>残りs:{contMsg}</p>
     </div>
   );
 }
