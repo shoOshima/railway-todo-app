@@ -93,8 +93,9 @@ export const Home = () => {
                   key={key}
                   className={`list-tab-item ${isActive ? 'active' : ''}`}
                   onClick={() => handleSelectList(list.id)}
+                  onFocus={() => handleSelectList(list.id)}
                   role="tab"
-                  aria-keyshortcuts={key}
+                  tabIndex="0"
                 >
                   {list.title}
                 </li>
