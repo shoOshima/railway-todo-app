@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function LimitTimer(props) {
   const [contMsg, setCountMsg] = useState('');
+  const [limitMsg,setLimitMsg] = useState("");
   if (props.limit != null) {
     useEffect(() => {
       console.log('start');
@@ -11,6 +12,9 @@ export default function LimitTimer(props) {
 
       let diff2Dates = limitdt - nowdt;
       setCountMsg(limmsg(diff2Dates));
+
+      setLimitMsg(da.getFullYear() +"年"+da.getMonth()+"月"+da.getDate()+"日_"+ da.getHours()+"時"+da.getMinutes()+"分まで")
+
       setInterval(() => {
         const interTime = new Date().getTime();
         let diff2Dates = limitdt - interTime;
@@ -43,7 +47,8 @@ export default function LimitTimer(props) {
 
   return (
     <div>
-      <p>残りs:{contMsg}</p>
+      <p>期限:{limitMsg}</p>
+      <p>残り:{contMsg}</p>
     </div>
   );
 }

@@ -1,7 +1,19 @@
+@use "../App.scss" as m;
+
+body{
+  background-color: #000000;
+  @include m.mq(sp){
+    background-color: #f5f5f5;
+  }
+  @include m.mq(tab){
+    background-color: #ff3333;
+  }
+}
+
 .taskList {
   margin: 50px auto;
   list-style: none;
-  width: 1000px;
+  width: auto;
 }
 
 .list-header {
