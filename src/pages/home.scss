@@ -1,12 +1,15 @@
 @use "../App.scss" as m;
 
 body{
-  background-color: #000000;
+  background-color: rgba(222, 253, 255, 0.808);
+  padding: 0.5em;
   @include m.mq(sp){
-    background-color: #f5f5f5;
+    background-color: #bfffca;
+    font-size:0.8em;
   }
   @include m.mq(tab){
-    background-color: #ff3333;
+    background-color: #ffd0d0c5;
+    font-size:0.9em;
   }
 }
 
@@ -33,7 +36,7 @@ body{
 
 .list-tab-item {
   flex-shrink: 0;
-  width: 100px;
+  width: auto;
   padding: 0 25px;
   text-overflow: normal;
   margin-right: 5px;
@@ -58,12 +61,19 @@ body{
 
 .task-item {
   list-style-type: none;
-  height: 120px;
+  height: auto;
   width: calc(100% - 25px);
   background-color: #f5f5f5;
-  padding-left: 25px;
+  padding: 10px;
+  margin: 5px;
   font-size: large;
   border: solid 1px #ffffff;
+  @include m.mq(sp){
+    font-size:small;
+  }
+  @include m.mq(tab){
+    font-size:medium;
+  }
 }
 
 .task-item-link {
@@ -72,6 +82,13 @@ body{
   height: 100%;
   text-decoration: none;
   color: #000000;
+}
+
+.task-timer{
+  @include m.mq(sp){
+    font-size:0.9em;
+  }
+
 }
 
 .error-message {

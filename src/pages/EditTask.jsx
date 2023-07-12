@@ -9,10 +9,10 @@ import './editTask.scss';
 export const EditTask = () => {
   const navigate = useNavigate();
   const { listId, taskId } = useParams();
-  const [cookies] = useCookies();
+  const [cookies,] = useCookies();
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
-  const [limit, setLimit] = useState();
+  const [limit, setLimit] = useState('');
   const [isDone, setIsDone] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const handleTitleChange = (e) => setTitle(e.target.value);
@@ -74,7 +74,7 @@ export const EditTask = () => {
         setDetail(task.detail);
         setLimit(limitformat);
         setIsDone(task.done);
-        console.log(task.limit.slice(0, 16));
+
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`);

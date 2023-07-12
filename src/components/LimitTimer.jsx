@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react';
 
 export default function LimitTimer(props) {
-  const [contMsg, setCountMsg] = useState('');
-  const [limitMsg,setLimitMsg] = useState("");
+
+  let limitMsg =""
+  let timeupMsg =""
+
   if (props.limit != null) {
-    useEffect(() => {
-      console.log('start');
-      const da = new Date(props.limit);
-      const limitdt = da.getTime();
-      const nowdt = new Date().getTime();
+    let yyyy = props.limit.slice(0,4)
+    let mo= props.limit.slice(5,7)-1
+    let dd= props.limit.slice(8,10)
+    let hh= props.limit.slice(11,13)
+    let mi= props.limit.slice(14,16)
+    let limitDate = new Date(yyyy,mo,dd,hh,mi)
 
-      let diff2Dates = limitdt - nowdt;
-      setCountMsg(limmsg(diff2Dates));
+    limitMsg = yyyy + "年" + (mo+1) + "月" + dd + "日 " + hh + "時" + mi +"分まで"
 
-      setLimitMsg(da.getFullYear() +"年"+da.getMonth()+"月"+da.getDate()+"日_"+ da.getHours()+"時"+da.getMinutes()+"分まで")
+    let diff = limitDate.getTime()-props.now
 
-      setInterval(() => {
-        const interTime = new Date().getTime();
-        let diff2Dates = limitdt - interTime;
-        setCountMsg(limmsg(diff2Dates));
-        console.log(contMsg);
-      }, 1000);
-    }, []);
+    if(diff>0){
+      timeupMsg = "残り:" + limmsg(diff)
+    }else{
+      timeupMsg = "期限超過"
+    }
   }
 
   function limmsg(diff2Dates) {
@@ -47,8 +47,8 @@ export default function LimitTimer(props) {
 
   return (
     <div>
-      <p>期限:{limitMsg}</p>
-      <p>残り:{contMsg}</p>
+      <p className="task-timer">期限:{limitMsg}</p>
+      <p className="task-timer">{timeupMsg}</p>
     </div>
   );
 }

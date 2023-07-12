@@ -14,9 +14,16 @@ export const Home = () => {
   const [selectListId, setSelectListId] = useState();
   const [tasks, setTasks] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [nowDate,setNowDate] = useState();
   const [cookies] = useCookies();
   const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value);
+
   useEffect(() => {
+    setInterval(() => {
+      let nowD_Str = new Date()
+      setNowDate(new Date(nowD_Str).getTime());
+    }, 1000);
+
     axios
       .get(`${url}/lists`, {
         headers: {
@@ -120,6 +127,7 @@ export const Home = () => {
               tasks={tasks}
               selectListId={selectListId}
               isDoneDisplay={isDoneDisplay}
+              now = {nowDate}
             />
           </div>
         </div>
@@ -130,7 +138,8 @@ export const Home = () => {
 
 // 表示するタスク
 const Tasks = (props) => {
-  const { tasks, selectListId, isDoneDisplay } = props;
+  const { tasks, selectListId, isDoneDisplay ,now} = props;
+
   if (tasks === null) return <></>;
 
   if (isDoneDisplay == 'done') {
@@ -150,7 +159,7 @@ const Tasks = (props) => {
                 <br />
                 {task.done ? '完了' : '未完了'}
                 <br />
-                <LimitTimer limit={task.limit} />
+                <LimitTimer limit={task.limit} now={now}/>
               </Link>
             </li>
           ))}
@@ -174,7 +183,7 @@ const Tasks = (props) => {
               <br />
               {task.done ? '完了' : '未完了'}
               <br />
-              <LimitTimer limit={task.limit} />
+              <LimitTimer limit={task.limit}  now={now}/>
             </Link>
           </li>
         ))}
